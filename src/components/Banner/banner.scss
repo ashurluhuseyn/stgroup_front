@@ -1,0 +1,156 @@
+.banner{
+    height: 634px;
+    margin-top: 60px;
+    &__wrap{
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 40px;
+        &__left{
+            background-color: #E6F3FC;
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+            border-radius: 32px;
+            transform: rotate(360deg);
+            width: 961px;
+            position: relative;
+            .banner-vector{
+                position: absolute;
+                top: 32px;
+                right: 64px;
+            }
+            &__content{
+                padding-left: 48px;
+                width: 500px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                h1{
+                    font-size: 54px;
+                    font-weight: 600;
+                    color: #003A5E;
+                    line-height: 67.5px;
+                }
+                p{
+                    font-size: 20px;
+                    font-weight: 300;
+                    color: #686868;
+                    margin: 24px 0 34px;
+                    line-height: 28px;
+                }
+                a{
+                    font-size: 20px;
+                    font-weight: 300;
+                    color: #008ADF;
+                    display: flex;
+                    align-items: center;
+                    margin-top: 24px;
+                    img{
+                        margin-left: 16px;
+                    }
+                }
+                
+            }
+        }
+        &__right{
+            background-image: url(../../assets/images/banner2.png);
+            background-size: cover;
+            width: 421px;
+            clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
+            border-radius: 32px;
+            transform: rotate(-360deg);
+        }
+    }
+}
+
+.cor-banner{
+    padding: 0 120px;
+    margin-top: 72px;
+    &__wrap{
+        backdrop-filter: blur(63.70000076293945px);
+        background: #FFFFFF1F;
+        height: 422px;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__content{
+            width: 726px;
+            height: 350px;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            h1{
+                font-size: 60px;
+                font-weight: 700;
+                color: #FFFFFF;
+                line-height: 75px;
+            }
+            p{
+                font-size: 24px;
+                font-weight: 200;
+                color: #fff;
+                line-height: 26px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .banner{
+        height: 300px;
+        &__wrap{
+            padding: 16px;
+            border-radius: 24px;
+            &__left{
+                width: 100%;
+                border-radius: 16px;
+                clip-path: none !important;
+                &__content{
+                    width: 100% !important;
+                    padding: 12px;
+                    h1{
+                        font-size: 32px !important;
+                        line-height: normal;
+                    }
+                    p{
+                        font-size: 14px !important;
+                    }
+                    a{
+                        margin-top: 16px;
+                        font-size: 16px;
+                    }
+                }
+            }
+            &__right{
+                display: none !important;
+            }
+        }
+    }
+    .cor-banner{
+        padding: 0 12px;
+        margin-top: 48px;
+        &__wrap{
+            height: 350px;
+            border-radius: 16px;
+            padding: 20px;
+            &__content{
+                gap: 24px;
+                h1{
+                    font-size: 32px;
+                    font-weight: 600;
+                    line-height: 45px;
+                }
+                p{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

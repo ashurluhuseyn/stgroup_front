@@ -1,0 +1,189 @@
+.fields-page{
+    padding: 0 120px;
+    margin-top: 72px;
+    .fields{
+        &__title{
+            h1{
+                font-size: 40px;
+                font-weight: 600;
+                color: #151515;
+            }
+        }
+        .categories{
+           background-color: transparent;
+           border: none;
+           margin: 24px auto;
+            li{
+               width: 150px;
+               height: 40px;
+               border: 1px solid #008ADF;
+               border-radius: 8px;
+               color: #008ADF;
+               padding: 0 24px;
+               font-size: 16px;
+               font-weight: 400; 
+               align-content: center;
+               text-align: center;
+               cursor: pointer;
+            }   
+        }
+        &__list{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            row-gap: 40px;
+            margin-top: 48px;
+        }
+    }
+}
+
+.fields-details-page {
+    padding: 0 120px;
+   
+    .fields-list{
+        margin-top: 148px;
+        &__title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1{
+                font-size: 40px;
+                font-weight: 500;
+                color: #151515;
+            }
+            a{
+                font-size: 20px;
+                font-weight: 300;
+                color: #008ADF;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+            }
+        }
+        &__items{
+            margin-top: 48px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            row-gap: 40px;
+        }
+    }
+    .plan-list{
+        margin-top: 120px;
+        &__title{
+            h1{
+                font-size: 40px;
+                font-weight: 500;
+                color: #1E1E1E;
+            }
+        }
+        &__accordion{
+            margin-top: 48px;
+            .accordion-title{
+                font-size: 24px;
+                font-weight: 400;
+                color: #1E1E1E;
+            }
+        }
+    }
+    .teachers-list{
+        margin-top: 120px;
+        &__title{
+            h1{
+                font-size: 40px;
+                font-weight: 500;
+                color: #151515;
+            }
+        }
+        &__items{
+            display: flex;
+            flex-direction: column;
+            gap: 72px;
+            margin-top: 48px;
+            .teacher-card{
+                .teacher-wrap{
+                    display: flex;
+                    gap: 72px;
+                    &__img{
+                        width: 384px;
+                        height: 324px;
+                        background-color: #8AC9F0;
+                        border-radius: 30px;
+                        img{
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    &__description{
+                        width: 660px;
+                        height: 192px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 24px;
+                        h1{
+                            font-size: 24px;
+                            font-weight: 400;
+                            color: #008ADF;
+                        }
+                        span{
+                            font-size: 18px;
+                            font-weight: 300;
+                            color: #686868;
+                        }
+                        p{
+                            font-size: 16px;
+                            font-weight: 300;
+                            color: #1E1E1E;
+                            line-height: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width:768px) {
+    .fields-details-page{
+        padding: 0 12px;
+        h1{
+            font-size: 24px !important;
+        }
+    }
+    .fields-list{
+        &__title{
+            a{
+                font-size: 14px !important;
+                gap: 8px !important;
+            }
+        }
+    }
+
+    .fields__list{
+        margin-top: 24px !important;
+        row-gap: 24px !important;
+    }
+    
+    .fields-page{
+        .fields__title{
+            h1{
+                text-align: center;
+                font-size: 32px;
+            }
+        }
+    }
+
+    .teacher-wrap{
+        flex-direction: column;
+        gap: 32px !important;
+        &__img, &__description{
+            width: 100% !important;
+        }
+        &__description{
+            height: auto !important;
+            gap: 16px !important;
+        }
+    }
+}

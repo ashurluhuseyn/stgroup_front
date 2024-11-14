@@ -1,0 +1,63 @@
+.join{
+    height: 400px;
+    margin-top: 120px;
+    &__wrap{
+        background-color: #8AC9F0;
+        background-image: url(../../assets/images/join-bg.png);
+        background-size: cover;
+        border-radius: 32px;
+        height: 100%;
+        padding: 25px 56px;
+        display: flex;
+        justify-content: space-between;
+        .join-form{
+            width: 769px;
+            .join-form-content{
+                width: 473px;
+                height: 216px;
+                display: flex;
+                flex-direction: column;
+                margin-top: 92px;
+                gap: 40px;
+                h1{
+                    font-size: 30px;
+                    font-weight: 500;
+                    color: #003A5E;
+                    line-height: 42px;
+                }
+              
+            }
+        }
+        .join-img{
+            width: 360px;
+            img{
+                height: 349px;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:768px) {
+   .join{
+    height: 260px !important;
+    &__wrap{
+        align-items: center;
+        padding: 25px ;
+        border-radius: 16px;
+    }
+    .join-form-content{
+        width: auto !important;
+        height: auto !important;
+        margin-top: 0 !important;
+        h1{
+            font-size: 24px !important;
+            line-height: 36px !important;
+        }
+    }
+    .join-img{
+        display: none;
+    }
+   }
+}

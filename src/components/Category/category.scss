@@ -1,0 +1,43 @@
+.categories {
+    width: 100%;
+    height: 80px;
+    background: rgba(26, 27, 94, 0.5019607843);
+    border-radius: 20px;
+    border: 1px solid #0F103F;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    margin: 48px auto;
+    padding: 16px;
+    gap: 12px;
+    overflow-x: scroll;
+    
+    li {
+        flex-grow: 1;
+        flex-shrink: 0;
+        max-width: 140px;
+        min-width: 80px;
+        height: 48px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 300;
+        color: #8E9198;
+        cursor: pointer;
+        align-content: center;
+    }
+
+    .active {
+        border-radius: 16px;
+        background-color: #10113F;
+        color: #fff;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .categories {
+        padding-bottom: 24px;
+        li {
+            font-size: 14px;
+        }
+    }      
+}

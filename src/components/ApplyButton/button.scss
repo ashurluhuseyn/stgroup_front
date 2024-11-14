@@ -1,0 +1,47 @@
+.apply-btn{
+    width: 174px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 12px 24px;
+    background-color: #008ADF;
+    color: #fff;
+    border: 1px solid #008ADF;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .4s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    img{
+        filter: brightness(0) invert(1);
+        margin-left: 8px;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        bottom: -100%;
+        left: -100%;
+        width: 0%;
+        height: 0%;
+        background-color: #ffffff5e;
+        border-radius: 50%;
+        transition: .6s;
+    }
+    &:hover{
+        &::before{
+            width: 300%;
+            height: 300%;
+        }
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .apply-btn{
+        font-size: 14px;
+    }
+}

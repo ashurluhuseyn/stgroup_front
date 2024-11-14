@@ -1,0 +1,246 @@
+.career-page{
+    .career{
+        padding: 0 120px;
+        margin-top: 72px;
+        &__title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1{
+                font-size: 32px;
+                font-weight: 600;
+                color: #1E1E1E;
+            }
+            .category-dropdown{
+                position: relative;
+                display: inline-block;
+                user-select: none;
+                .dropdown-title{
+                    font-size: 16px;
+                    font-weight: 300;
+                    color: #1E1E1E;
+                    cursor: pointer;
+                }
+                .dropdown-content{
+                    position: absolute;
+                    width: 154px;
+                    background-color: #fff;
+                    border-radius: 8px;
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 12px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease;
+                    gap: 8px;
+                    padding: 0 24px;
+                    padding-left: 12px !important;
+                    li{
+                        font-size: 16px;
+                        font-weight: 300;
+                        color: #008ADF;
+                    }
+                    &.open {
+                        max-height: 184px;
+                        padding: 12px 24px;
+                      }
+                }
+            }
+            
+        }
+        &__list{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            row-gap: 48px;
+            margin-top: 48px;
+        }
+    }
+}
+
+.career-details{
+    padding: 0 120px;
+    .breadcrumb{
+        margin-top: 40px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        a,span{
+            font-size: 14px;
+            font-weight: 300;
+        }
+            li{
+                &:nth-child(1) {
+                    a {
+                        color: #989898;
+                    }
+                }
+                &:nth-child(2) {
+                    span{
+                        color: #989898;
+                    }
+                }
+                &:nth-child(3) {
+                    a {
+                        color: #008ADF;
+                    }
+                }
+            }
+    }
+    &__content{
+        h2{
+            font-size: 32px;
+            font-weight: 500;
+            color: #151515;
+            margin-top: 40px;
+        }
+        &__title{
+            margin: 48px 0 64px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            h1{
+                font-size: 48px;
+                font-weight: 500;
+                color: #008ADF;
+            }
+            span{
+                font-size: 20px;
+                font-weight: 300;
+                color: #686868;
+                .vacancy-deadline{
+                    color: #008ADF;
+                }
+            }
+        }
+        &__list{
+         display: flex;
+         flex-direction: column;
+         gap: 56px;
+         .list-elem{
+            h4{
+                font-size: 28px;
+                font-weight: 400;
+                color: #1E1E1E;
+            }
+            ul{
+                display: flex;
+                flex-direction: column;
+                list-style-type: disc;
+                margin: 32px 0 0 2rem;
+                gap: 16px;
+                li{
+                    font-size: 16px;
+                    font-weight: 300;
+                    color: #686868;
+                }
+            }
+            form{
+                margin-top: 32px;
+                .input-group{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 32px;
+                    width: 456px;
+                    &__row{
+                        display: flex;
+                        gap: 12px;
+                        input{
+                            width: 222px;
+                            height: 48px;
+                            background-color: #fff;
+                            padding: 12px 16px;
+                            font-size: 16px;
+                            font-weight: 300;
+                            color: #989898;
+                        }
+                    }
+                    .custom-cv-upload{
+                        input[type="file"] {
+                            display: none;
+                        }
+                    }
+                    .admin-users__form__container{
+                        background-color: #fff;
+                        height: 48px;
+                        display: flex;
+                        align-items: center;
+                        padding: 12px 16px;
+                        label{
+                            font-size: 14px;
+                            font-weight: 400;
+                            color: #667085;
+                            font-size: 16px;
+                            font-weight: 300;
+                            color: #4B4B4B;
+                            display: flex;
+                            cursor: pointer;
+                            img{
+                                margin-right: 8px;
+                            }
+                        }
+                    }
+                    .input-group-btn{
+                        button{
+                            width: 100%;
+                            height: 48px;
+                            background-color: #008ADF;
+                            color: #fff;
+                            border-radius: 8px;
+                            padding: 12px 24px;
+                            font-size: 16px;
+                            font-weight: 400;
+                            display: flex;
+                            justify-content: center;
+                            cursor: pointer;
+                            img{
+                                filter: brightness(0) invert(1);
+                                margin-left: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+         }   
+        }
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .vacancy-card{
+        width: 100% !important;
+        padding: 32px 16px !important;
+    }
+    .career-page .career{
+        padding: 0 12px !important;
+    }
+    .career__title{
+        h1{
+            font-size: 24px !important;
+        }
+    }
+    .career-details {
+        padding: 0 12px !important;
+        h4{
+            font-size: 22px !important;
+        }
+        ul{
+            font-size: 14px !important;
+        }
+    }
+    .dropdown-content{
+        left: -60px;
+    }
+    .input-group{
+        width: auto !important;
+        gap: 16px !important;
+        &__row{
+            flex-direction: column;
+            gap: 16px !important; 
+        }
+        input{
+            width: auto !important;
+        }
+    }
+}

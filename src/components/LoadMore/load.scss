@@ -1,0 +1,27 @@
+.load-more{
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.load-more a{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 300;
+    color: #008ADF;
+}
+
+.load-more a img{
+    margin-left: 12px;
+}
+
+
+@media screen and (max-width:768px) {
+    .load-more{
+        margin-top: 32px;
+        a{
+            font-size: 14px;
+        }
+    }
+}

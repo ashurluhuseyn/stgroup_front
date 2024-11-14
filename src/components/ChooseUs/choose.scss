@@ -1,0 +1,102 @@
+.choose{
+    margin-top: 120px;
+    height: 726px;
+    .choose-wrap{
+        height: 100%;
+        border-radius: 32px;
+        background-color: #F9FAFA;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        position: relative;
+        .choose-img{
+            img{
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                &:nth-child(2){
+                    width: 431px;
+                    height: 431px;
+                    border-radius: 50%;
+                    left: 5%;
+                }
+            }
+        }
+        .choose-content{
+            width: 580px;
+            height: 312px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            h1{
+                font-size: 32px;
+                font-weight: 600;
+                color: #1E1E1E;
+            }
+            p{
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20.8px;
+                color: #686868;
+            }
+            ul{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 24px;
+                li{
+                    width: 278px;
+                    height: 64px;
+                    display: flex;
+                    align-items: center;
+                    background-color: #fff;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    span{
+                        font-size: 20px;
+                        font-weight: 300;
+                        color: #151515;
+                        margin-left: 24px;
+                    }
+                    &:nth-child(2) {
+                        img{
+                            filter: hue-rotate(180deg);
+                        }
+                    }
+                    &:nth-child(3) {
+                        img{
+                            filter: hue-rotate(240deg);
+                        }
+                    }
+                    &:nth-child(4) {
+                        img{
+                            filter: hue-rotate(120deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen  and (max-width:768px){
+    .choose{
+        height: auto;
+        margin-top: 32px;
+        .choose-wrap{
+            align-items: normal;
+            padding: 40px 12px;
+            .choose-img{
+                display: none;
+            }
+            .choose-content{
+                height: auto;
+                .choose-content-items{
+                    li{
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+}
