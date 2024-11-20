@@ -12,7 +12,7 @@
         .categories{
            background-color: transparent;
            border: none;
-           margin: 24px auto;
+           margin: 24px 0;
             li{
                width: 150px;
                height: 40px;
@@ -70,6 +70,7 @@
     }
     .plan-list{
         margin-top: 120px;
+        
         &__title{
             h1{
                 font-size: 40px;
@@ -78,12 +79,20 @@
             }
         }
         &__accordion{
-            margin-top: 48px;
+            margin-top: 32px;
+            .accordion-content {
+                p{
+                    font-size: 16px;
+                    font-weight: 300;
+                    color: #686868;
+                }
+            }
             .accordion-title{
-                font-size: 24px;
+                font-size: 20px;
                 font-weight: 400;
                 color: #1E1E1E;
             }
+            
         }
     }
     .teachers-list{
@@ -119,7 +128,6 @@
                         height: 192px;
                         display: flex;
                         flex-direction: column;
-                        gap: 24px;
                         h1{
                             font-size: 24px;
                             font-weight: 400;
@@ -129,6 +137,7 @@
                             font-size: 18px;
                             font-weight: 300;
                             color: #686868;
+                            margin: 8px 0 24px;
                         }
                         p{
                             font-size: 16px;
@@ -141,38 +150,143 @@
             }
         }
     }
+    .fields-adv{
+        margin-top: 120px;
+            h1{
+                font-size: 40px;
+                font-weight: 500;
+                color: #151515;
+            }
+        &__wrap{
+            height: 472px;
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 48px;
+            gap: 60px;
+            &__item{
+                width: 45%;
+                &__img{
+                    display: flex;
+                    align-items: center;
+                    div{
+                        width: 72px;
+                        height: 72px;
+                        background-color: #008ADF;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 12px;
+                        padding: 20px;
+                    }
+                    span{
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: #008ADF;
+                        margin-left: 16px;
+                    }
+                }
+                &__text{
+                    margin-top: 20px;
+                    p{
+                        font-size: 18px;
+                        font-weight: 300;
+                        color: #989898;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
 
 @media screen and (max-width:768px) {
+    .fields{
+    .categories {
+        li{
+            width: auto !important;
+            font-size: 14px !important;
+        }
+    }
+    }
     .fields-details-page{
         padding: 0 12px;
         h1{
             font-size: 24px !important;
         }
-    }
-    .fields-list{
-        &__title{
-            a{
-                font-size: 14px !important;
-                gap: 8px !important;
+        .fields-adv{
+            margin-top: 64px;
+            h1{
+                text-align: center;
+            }
+            &__wrap{
+                height: auto !important;
+                margin-top: 32px;
+                padding: 32px 12px;
+                border-radius: 16px;
+                &__item{
+                    width: 100%;
+                    &__img{
+                        div{
+                            padding: 16px;
+                            width: 50px;
+                            height: 50px;
+                        }
+                        span{
+                            font-size: 16px;
+                        }
+                    }
+                    &__text{
+                        margin-top: 12px;
+                        p{
+                            font-size: 14px;
+                        }
+                    }
+                }
             }
         }
-    }
+        .fields-list{
+            &__items{
+                row-gap: 32px;
+            }
+            &__title{
+                h1{
+                    text-align: center;
+                    font-size: 32px;
+                }
+                a{
+                    font-size: 14px !important;
+                    gap: 8px !important;
+                }
+            }
+        }
+        .plan-list{
+            margin-top: 64px;
+            &__accordion{
+                .accordion-title{
+                    font-size: 16px;
+                }
+                .accordion-content{
 
+                }
+            }
+        }
+        .teachers-list{
+            margin-top: 64px;
+        }
+    }
+    
     .fields__list{
         margin-top: 24px !important;
         row-gap: 24px !important;
     }
     
     .fields-page{
-        .fields__title{
-            h1{
-                text-align: center;
-                font-size: 32px;
-            }
-        }
+        padding: 0 12px;
     }
 
     .teacher-wrap{
@@ -180,6 +294,9 @@
         gap: 32px !important;
         &__img, &__description{
             width: 100% !important;
+        }
+        &__img{
+            border-radius: 16px;
         }
         &__description{
             height: auto !important;

@@ -3,6 +3,7 @@ import { GoTrash, GoCheck } from "react-icons/go";
 import { getApplies, updateApplyStatus } from '../../../../api/corporateApply';
 import toast, { Toaster } from 'react-hot-toast';
 import { getFormattedDate } from '../../../../utils/date';
+import { maskPhone } from '../../../../utils/mask';
 
 
 const CorporativeApply = () => {
@@ -65,7 +66,7 @@ const CorporativeApply = () => {
                   <tr className={data.status === 'silinmiş' && 'text-decoration-line-through'} key={data.id}>
                     <td className='px-6 py-3 whitespace-nowrap text-sm text-gray border'>{data.firstname} {data.lastname}</td>
                     <td className='px-6 py-3 whitespace-nowrap text-sm text-gray border'>{data.email}</td>
-                    <td className='px-6 py-3 whitespace-nowrap text-sm text-gray border'>{data.phone}</td>
+                    <td className='px-6 py-3 whitespace-nowrap text-sm text-gray border'>{maskPhone(data.phone)}</td>
                     <td className='px-6 py-3 whitespace-nowrap text-sm text-gray border'>{data.description}</td>
                     <td className='px-6 py-3 whitespace-nowrap text-sm text-gray border'>{getFormattedDate(data.createdAt)}</td>
                     <td className='px-6 py-3 whitespace-nowrap text-sm text-gray border'>

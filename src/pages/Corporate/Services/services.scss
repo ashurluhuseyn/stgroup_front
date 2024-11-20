@@ -22,7 +22,7 @@
         }
     }
     &__category{
-        width: 100%;
+        width: max-content;
         height: 80px;
         background: rgba(26, 27, 94, 0.5019607843);
         border-radius: 20px;
@@ -120,6 +120,13 @@
                 color: #FFFFFFB2;
                 margin-top: 40px;
                 line-height: 28px;
+            }
+            ul,ol{
+                font-size: 16px;
+                font-weight: 400;
+                color: #FFFFFFB2;
+                list-style: circle;
+                margin: 32px 0 0 15px;
             }
         }
         &__img{

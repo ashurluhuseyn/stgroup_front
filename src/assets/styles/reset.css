@@ -20,7 +20,7 @@ ul{
     margin-bottom: 0 !important;
 }
 
-input,select {
+input,select, textarea {
     outline: none;
 }
 
@@ -158,9 +158,21 @@ table .role-dp{
     background-color: #F1F5F7;
 }
 
+.alert-message {
+    width: 25%;
+}
+
 
 @media screen  and (max-width:768px){
     .educational{
         padding: 0 12px !important;
+    }
+    .corporate-bg {
+        background-position: left;
+        background-size: auto !important;
+    }
+    .alert-message{
+        width: 80% !important;
+        margin: auto;
     }
 }

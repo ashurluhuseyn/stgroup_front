@@ -5,14 +5,7 @@ import AdvantageCard from './Card'
 
 const Advantages = () => {
   return (
-    <div className='advantages'>
-        <h1 className='advantages__title'>Üstünlüklərimiz</h1>
-        <div className="advantages__list">
-            <AdvantageCard />
-            <AdvantageCard />
-            <AdvantageCard />
-        </div>
-    </div>
+    <h1></h1>
   )
 }
 

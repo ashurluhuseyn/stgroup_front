@@ -2,14 +2,13 @@ import React from 'react'
 import ApplyButton from '../../ApplyButton'
 import { ROUTES } from '../../../routes'
 
-const CorporateBanner = () => {
+const CorporateBanner = ({ data }) => {
   return (
     <div className='cor-banner'>
         <div className="cor-banner__wrap">
             <div className="cor-banner__wrap__content">
-                <h1>Study from home
-                with experts</h1>
-                <p>Learning with Experts offer arrange of courses across gardening, photography and more delivered online. </p>
+                <h1>{data.sectionTitle}</h1>
+                <p>{data.sectionDescription}</p>
                 <ApplyButton link={ROUTES.CORPORATE.CONTACT.PATH}/>
             </div>
         </div>

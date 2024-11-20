@@ -107,6 +107,22 @@
                     height: 200px;
                     border-radius: 24px;
                     padding: 54px 0 0 32px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0;
+                        height: 100%;
+                        background-color: #ffffff23;
+                        transition: .4s;
+                    }
+                    &:hover{
+                        &::before{
+                            width: 100%;
+                        }
+                    }
                     &__elem{
                         display: flex;
                         width: 320px;

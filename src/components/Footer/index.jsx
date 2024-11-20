@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 import logo from '../../assets/images/logo.svg'
 import instagram from '../../assets/images/instagram.svg'
@@ -23,16 +23,16 @@ const Footer = () => {
             <nav className="footer-nav">
                 <ul>
                     <li>
-                        <Link to='/'>Haqqımızda</Link>
+                        <NavLink to='/about'>Haqqımızda</NavLink>
                     </li>
                     <li>
-                        <Link to='/'>Tədris sahələri</Link>
+                        <NavLink to='/fields'>Tədris sahələri</NavLink>
                     </li>
-                    <li>
-                        <Link to='/'>Bloq</Link>
+                                <li>
+                        <NavLink to='/blogs'>Bloq</NavLink>
                     </li>
-                    <li>
-                        <Link to='/'>Tədbirlər</Link>
+                                <li>
+                        <NavLink to='/careers'>Karyera</NavLink>
                     </li>
                 </ul>
             </nav>

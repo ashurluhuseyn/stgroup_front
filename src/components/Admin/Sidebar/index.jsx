@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/logo.svg';
-import { CiHome, CiUser, CiPen, CiPercent, CiCircleList, CiChat1, CiPower, CiGrid42, CiBullhorn, CiViewTimeline, CiViewList, CiFolderOn } from "react-icons/ci";
+import { CiHome, CiUser, CiPen, CiPercent, CiCircleList, CiChat1, CiPower, CiGrid42, CiBullhorn, CiViewTimeline, CiViewList, CiFolderOn, CiBookmark } from "react-icons/ci";
 import './sidebar.scss';
 import { useAuth } from '../../../context/authContext';
 
@@ -22,12 +22,27 @@ const Sidebar = () => {
         <ul>
           <li>
             <NavLink to='/admin'>
+              <CiHome /> Göstəricilər
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/admin/home'>
               <CiHome /> Ana səhifə
             </NavLink>
           </li>
           <li>
             <NavLink to='/admin/courses'>
               <CiFolderOn /> Kurslar
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/admin/subjects'>
+              <CiBookmark /> Mövzular
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/admin/teachers'>
+              <CiUser /> Təlimçilər
             </NavLink>
           </li>
           <li onClick={toggleApplyDropdown} className="dropdown">
@@ -71,6 +86,11 @@ const Sidebar = () => {
           <li>
             <NavLink to='/admin/blogs'>
               <CiCircleList /> Bloqlar
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/admin/plans'>
+              <CiViewTimeline /> Plan
             </NavLink>
           </li>
           <li>

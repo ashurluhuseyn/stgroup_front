@@ -1,0 +1,22 @@
+
+@media screen  and (max-width:768px){
+    .choose{
+        height: auto;
+        margin-top: 32px;
+        .choose-wrap{
+            align-items: normal;
+            padding: 40px 12px;
+            .choose-img{
+                display: none;
+            }
+            .choose-content{
+                height: auto;
+                .choose-content-items{
+                    li{
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+}

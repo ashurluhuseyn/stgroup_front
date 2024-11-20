@@ -1,48 +1,87 @@
 import axiosInstance from './axiosInstance';
 
-export const createCategory = async (data) => {
+export const createEvent = async (data) => {
   try {
-    const response = await axiosInstance.post('/events/categories', data);
+    const token = localStorage.getItem('token');
+    const response = await axiosInstance.post('/event', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      },
+    });
     return response.data;
   } catch (error) {
-    console.error("Error creating category:", error);
+    console.error("Error creating service:", error);
     throw error;
   }
 };
 
-export const getCategories = async (userId) => {
+export const getEvents = async () => {
   try {
-    const response = await axiosInstance.get(`/events/categories`);
+    const response = await axiosInstance.get(`/event`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching categories:", error);
+    console.error("Error fetching events:", error);
     throw error;
   }
 };
 
-export const getCategoryById = async (id) => {
+export const getEventsByCategory = async (id) => {
   try {
-    const response = await axiosInstance.get(`/events/categories/${id}`);
+    const response = await axiosInstance.get(`/event/category/${id}`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching category:", error);
+    console.error("Error fetching events by category:", error);
     throw error;
   }
 };
 
-export const updateCategory = async (id, data) => {
+
+export const getEventById = async (id) => {
   try {
-    const response = await axiosInstance.patch(`/events/categories/${id}`, data);
+    const response = await axiosInstance.get(`/event/${id}`);
     return response.data;
   } catch (error) {
-    console.error("Error updating category:", error);
+    console.error("Error fetching event by id:", error);
     throw error;
   }
 };
 
-export const deleteCategory = async (id) => {
+export const getEventDetails = async (id) => {
+  try {
+    const response = await axiosInstance.get(`/event/${id}/details`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching event by id:", error);
+    throw error;
+  }
+};
+
+export const updateEvent = async (id, data) => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await axiosInstance.patch(`/event/${id}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+    })
+    return response.data;
+  } catch (error) {
+    console.error("Error updating event:", error);
+    throw error;
+  }
+};
+
+
+export const deleteEvent = async (id) => {
     try {
-      const response = await axiosInstance.delete(`/events/categories/${id}`);
+      const token = localStorage.getItem('token');
+      const response = await axiosInstance.delete('/event', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      });
       return response.data; 
     } catch (error) {
       console.error("Delete error:", error);

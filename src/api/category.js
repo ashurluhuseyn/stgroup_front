@@ -2,7 +2,13 @@ import axiosInstance from './axiosInstance';
 
 export const createCategory = async (data) => {
   try {
-    const response = await axiosInstance.post('/category', data);
+    const token = localStorage.getItem('token');
+    const response = await axiosInstance.post('/category', data, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error creating category:", error);
@@ -43,8 +49,13 @@ export const updateCategory = async (id, data) => {
 };
 
 export const deleteCategory = async (id) => {
-    try {
-      const response = await axiosInstance.delete(`/category/${id}`);
+  try {
+      const token = localStorage.getItem('token');
+      const response = await axiosInstance.delete(`/category/${id}` , {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       return response.data; 
     } catch (error) {
       console.error("Delete error:", error);

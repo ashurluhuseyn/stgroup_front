@@ -2,49 +2,66 @@ import React, { useEffect, useState } from 'react'
 import './services.scss'
 import ServiceCard from '../../../components/Services/ServiceCard';
 import { Helmet } from 'react-helmet';
+import { getServices } from '../../../api/service';
+import { getCategories } from '../../../api/category';
 
 const Services = () => {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('All');
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    setCategories(['All', 'Business', 'English', 'Design']);
+    const fetchData = async () => {
+      try {
+        const data = await getServices();
+        const category = await getCategories();
+        setData(data.services)
+        setCategories(category)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
   }, []);
+
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
   };
   return (
     <div className='services'>
-      <Helmet>
-        <title>Xidmətlərimiz</title>
-      </Helmet>
+      {
+        data ? <>
+          <Helmet>
+            <title>Xidmətlərimiz</title>
+          </Helmet>
         <div className="services__title">
             <h1>Xidmətlərimiz</h1>
-            <p>Partnering with DigitX offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI.</p>
+            <p>İnnovativ texnologiyaları tətbiq edən əməkdaşlar şirkətin rəqabət qabiliyyətini artırır, məhsulun və xidmətin keyfiyyətini yüksəldir. Korporativ hədəflərinizə çatmaq üçün komandanızı korporativ həllərimizlə gücləndirin</p>
         </div>
         <ul className="services__category">
-            {categories.map((category) => (
+            {categories && categories.map(item => (
             <li
-                key={category}
-                className={activeCategory === category ? 'active' : ''}
-                onClick={() => handleCategoryClick(category)}
+                key={item.id}
+                className={activeCategory === item ? 'active' : ''}
+                onClick={() => handleCategoryClick(item)}
             >
-                {category}
+                {item.title}
             </li>
             ))}
         </ul>
         <div className="services__list" style={{marginTop: "32px"}}>
-            <ServiceCard />
-            <ServiceCard />
-            <ServiceCard />
-            <ServiceCard />
-            <ServiceCard />
-            <ServiceCard />
-            <ServiceCard />
-            <ServiceCard />
-            <ServiceCard />
+            {
+              data && data.map(item => {
+                return(
+                  <ServiceCard key={item.id} data={item}/>
+                )
+              })
+            }
         </div>
+        </> : 'yuklenir'
+      }
     </div>
   )
 }

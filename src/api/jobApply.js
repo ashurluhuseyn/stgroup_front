@@ -1,9 +1,12 @@
 import axiosInstance from './axiosInstance';
 
-export const createJobApplication = async (data) => {
+export const createJobApplication = async (id, data) => {
   try {
-    console.log(data);
-    const response = await axiosInstance.post('/vacancy/apply', data);
+    const response = await axiosInstance.post(`/vacancy/apply/${id}`, data,  {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error creating job application:", error);

@@ -2,9 +2,11 @@ import axiosInstance from './axiosInstance';
 
 export const createCourse = async (data) => {
     try {
+        const token = localStorage.getItem('token');
         const response = await axiosInstance.post(`/course`, data, {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data',
+             Authorization: `Bearer ${token}`
           },
         })
         return response.data;
@@ -13,7 +15,6 @@ export const createCourse = async (data) => {
         throw error;
       }
 };
-
 
 export const getCourses = async () => {
   try {
@@ -35,10 +36,40 @@ export const getCourseById = async (id) => {
   }
 };
 
+export const getCourseDetails = async (id) => {
+  try {
+    const response = await axiosInstance.get(`/course/${id}/details`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching course details:", error);
+    throw error;
+  }
+};
+
+export const updateCourse = async (id, data) => {
+  try {
+    const response = await axiosInstance.patch(`/course/${id}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    return response.data;
+  } catch (error) {
+    console.error("Error updating course:", error);
+    throw error;
+  }
+};
+
 
 export const deleteCourse = async (id) => {
     try {
-      const response = await axiosInstance.delete(`/course/${id}`);
+      const token = localStorage.getItem('token');
+      const response = await axiosInstance.delete(`/course/${id}`, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+           Authorization: `Bearer ${token}`
+        },
+      });
       return response.data; 
     } catch (error) {
       console.error("Delete course error:", error);

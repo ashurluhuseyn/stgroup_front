@@ -23,7 +23,6 @@
                 }
                 .dropdown-content{
                     position: absolute;
-                    width: 154px;
                     background-color: #fff;
                     border-radius: 8px;
                     display: flex;
@@ -39,9 +38,10 @@
                         font-size: 16px;
                         font-weight: 300;
                         color: #008ADF;
+                        cursor: pointer;
                     }
                     &.open {
-                        max-height: 184px;
+                        max-height: max-content;
                         padding: 12px 24px;
                       }
                 }

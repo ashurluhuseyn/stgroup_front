@@ -1,121 +1,162 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
-import { createBlog, getBlogById, updateBlog } from '../../../../api/blog';
 import { getCategories } from '../../../../api/category';
+import { createService, getServiceById, updateService } from '../../../../api/service';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 const ServiceForm = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
-  const [blog, setBlog] = useState({
+  const { id } = useParams();
+  const [categories, setCategories] = useState([]);
+  const [service, setService] = useState({
     title: '',
     description: '',
+    description2: '',
     categoryID: '',
     image: null,
   });
-  const [imageFile, setImageFile] = useState(null);
 
   useEffect(() => {
-    if (id) {
-      getBlogById(id).then(data => {
-        setBlog(data.blog);
-      }).catch(error => console.error("Error fetching blog: ", error));
-    }
-  }, [id]);
-
-  useEffect(() => {
-    const fetchData = async () => {
+    const fetchCategories = async () => {
       try {
         const data = await getCategories();
-        setData(data);
+        setCategories(data);
       } catch (error) {
-        console.log(error);
+        console.error('Error fetching categories:', error);
       }
     };
 
-    fetchData();
+    fetchCategories();
   }, []);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImageFile(file);
-    setBlog((prevBlog) => ({ ...prevBlog, image: file.name }));
+  useEffect(() => {
+    if (id) {
+      const fetchService = () => {
+        getServiceById(id)
+          .then((data) => {
+            setService({
+              title: data.service?.title || '',
+              description: data.service?.description || '',
+              description2: data.service?.description2 || '',
+              categoryID: data.service?.categoryID || '',
+              image: null,
+            });
+          })
+          .catch((error) => {
+            console.error('Error fetching service:', error);
+          });
+      };
+  
+      fetchService();
+    }
+  }, [id]);
+  
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setService({ ...service, [name]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setService({ ...service, image: e.target.files[0] });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const formData = new FormData();
-  
-    formData.append('title', blog.title);
-    formData.append('description', blog.description);
-    formData.append('categoryID', blog.categoryID);
-  
-    if (imageFile) {
-      formData.append('image', imageFile);
-    }
-  
+    formData.append('title', service.title);
+    formData.append('description', service.description);
+    formData.append('description2', service.description2);
+    formData.append('categoryID', service.categoryID);
+    if (service.image) formData.append('image', service.image);
+
     try {
       if (id) {
-        await updateBlog(id, formData);
-        toast.success('Məlumat redaktə olundu');
+        await updateService(id, formData);
+        toast.success('Xidmət uğurla yeniləndi!');
       } else {
-        await createBlog(formData);
-        toast.success('Məlumat əlavə olundu');
+        await createService(formData);
+        toast.success('Xidmət uğurla yaradıldı!');
       }
-      navigate('/admin/blogs');
+      navigate('/admin/services');
     } catch (error) {
-      console.error('Error during submission:', error.response ? error.response.data : error);
-      toast.error('Xəta baş verdi: ' + (error.response ? error.response.data.message : 'Bilinməyən xəta'));
+      console.error('Error submitting service:', error);
+      toast.error('Xidmət göndərilərkən xəta baş verdi.');
     }
   };
   
   return (
-    <div className='admin-users'>
-      <div className="admin-users__title mb-5 justify-content-center">
-        <h1>{id ? 'Məlumatı yeniləyin' : 'Yeni bloq əlavə edin'}</h1>
+    <div className="admin-users">
+    <div className="admin-users__title mb-5 justify-content-center">
+      <h1>{id ? 'Xidməti yeniləyin' : 'Yeni xidmət əlavə edin'}</h1>
+    </div>
+    <form onSubmit={handleSubmit} className="admin-users__form">
+      <div className="admin-users__form__container">
+        <label>Başlıq</label>
+        <input
+          type="text"
+          name="title"
+          value={service.title}
+          onChange={handleInputChange}
+          placeholder="Xidmət başlığı"
+        />
       </div>
-      <div className="admin-users__form">
-        <div className="admin-users__form__container">
-          <label htmlFor="">Başlıq</label>
-          <input value={blog.title} onChange={(e) => setBlog({ ...blog, title: e.target.value })} />
-        </div>
-        <div className="admin-users__form__container">
-          <label htmlFor="">Kateqoriya</label>
-          <select value={blog.categoryID} onChange={(e) => setBlog({ ...blog, categoryID: e.target.value })}>
-            <option value="">Seçin</option>
-            {
-              data.map(item => (
-                <option key={item.id} value={item.id}>{item.title}</option>
-              ))
-            }
-          </select>
-        </div>
-        <div className="admin-users__form__container">
-          <label htmlFor="">Təsvir</label>
-          <input value={blog.description} onChange={(e) => setBlog({ ...blog, description: e.target.value })} />
-        </div>
-        <div className="admin-users__form__container">
+      <div className="admin-users__form__container">
+        <label>Kateqoriya</label>
+        <select
+          name="categoryID"
+          value={service.categoryID}
+          onChange={handleInputChange}
+        >
+          <option value="" disabled>
+            Kateqoriya seçin
+          </option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.title}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="admin-users__form__container">
+        <label>Açıqlama</label>
+        <textarea
+          name="description"
+          value={service.description}
+          onChange={handleInputChange}
+          placeholder="Qısa açıqlama"
+        />
+      </div>
+      <div className="admin-users__form__container">
+        <label>Ətraflı Açıqlama</label>
+        <CKEditor
+            editor={ClassicEditor}
+            data={service.description2 || ''} // Əgər undefined və ya null olarsa, boş string kimi istifadə olunur
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              setService({ ...service, description2: data });
+            }}
+          />
+      </div>
+      <div className="admin-users__form__container">
           <label htmlFor="file-upload" className="custom-file-upload">
             Şəkli seçin
           </label>
           <input 
             id="file-upload" 
             type="file" 
-            onChange={handleImageChange}
+            onChange={handleFileChange}
           />
-          {id && blog.image && (
-            <img src={`http://localhost:5000/uploads/blogs/${blog.image}`} 
-                 style={{ width: "250px", height: "250px", display: "block", marginTop: "24px" }} 
-                 alt="Şəkil" />
-          )}
-        </div>
-        <div className="admin-users__form__container">
-          <button onClick={handleSubmit}>{id ? 'Yenilə' : 'Əlavə et'}</button>
-        </div>
       </div>
-      <Toaster />
-    </div>
+      <div className="admin-users__form__container">
+        <button type="submit">{id ? 'Yenilə' : 'Əlavə et'}</button>
+      </div>
+    </form>
+    <Toaster />
+  </div>
   );
 };
 

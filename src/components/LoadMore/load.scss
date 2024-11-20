@@ -10,18 +10,30 @@
     font-size: 20px;
     font-weight: 300;
     color: #008ADF;
+    img{
+        transition: .4s;
+        margin-left: 12px;
+    }
+    &:hover{
+        img{
+            transform: translateX(10px);
+        }
+    }
 }
-
-.load-more a img{
-    margin-left: 12px;
-}
-
 
 @media screen and (max-width:768px) {
     .load-more{
         margin-top: 32px;
         a{
             font-size: 14px;
+            img{
+                transition: .4s;
+            }
+            &:hover{
+                img{
+                    transform: translateX(10px);
+                }
+            }
         }
     }
 }

@@ -1,17 +1,39 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet'
+import { Link, useParams } from 'react-router-dom'
 import '../blog.scss'
 
 import calendar from '../../../../assets/images/calendar.svg'
 import BlogCard from '../../../../components/Blog'
 import JoinUs from '../../../../components/JoinUs'
-import { Helmet } from 'react-helmet'
+import { getBlogDetails } from '../../../../api/blog'
+import { getFormattedDate } from '../../../../utils/date'
+import LoadMore from '../../../../components/LoadMore'
+import AlertMessage from '../../../../components/Alert'
 
 const BlogDetails = () => {
+    const { id } = useParams()
+    const [blog, setBlog] = useState();
+
+    useEffect(() => {
+        const fetchBlog = async () => {
+        try {
+            const data = await getBlogDetails(id);
+            setBlog(data)
+        } catch (error) {
+            console.error('Error fetching blog:', error);
+        }
+    };
+
+    fetchBlog();
+  }, []);
+  
   return (
     <div className='blog-details'>
-        <Helmet>
-        <title>Bloqlar</title>
+       {
+        blog ? <>
+             <Helmet>
+        <title>{blog.blog.title}-</title>
         </Helmet>
         <ul className="breadcrumb">
                 <li>
@@ -21,28 +43,26 @@ const BlogDetails = () => {
                     <span>/</span>
                 </li>
                 <li>
-                    <Link to='/blogs/1'>UX/UX Dizayn</Link>
+                    <Link to={`/blogs/${blog.blog.id}`}>{blog.blog.title}</Link>
                 </li>
         </ul>
         <div className="details">
             <h1>Blog</h1>
             <div className="details__wrap">
                 <div className="details__wrap__img">
-                <img src="https://s3-alpha-sig.figma.com/img/8eed/f335/a1412977333c788f4aabb90649e4f01a?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LsxtY-doJpcEm~3e7Bk11rHbeyX-prF9O-KAUdgmz7hNKS9o3s9Mxwx89HH3sMUE5kZMJ6f1nePaqRAFS~uPEphzm6dSSuP1xJShXj3PqFrE4CrYGz1f-ZO3hpFdBOg-MxTyNj~ENGyBBWZmL~gl1SSeVNN6a6N6sDLf3em5eQmNM5vfMJXs9SA2bPV6ddHpsYf4eZkqQ0syXQM6XhaWKHFopwGlsoQo0S~zQ5lfqZOnQGmG0RHNl4bxq-a7xh1oebzOV0KYzqqQWr9bVhxUrz2MGTKOoHJq013B6CDXcHvGr6EDO~8bE3MbJyibOY8fOasioZa-asGSExw32bZT~w__" alt="" />
+                    <img src={`http://localhost:5000/uploads/blogs/${blog.blog.image}`}  alt="" />
                 </div>
                 <div className="details__wrap__content">
-                    <h2>Dizaynın önəmi nədir?</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur. Diam dui eu sed adipiscing mi mattis. Pellentesque ultrices a ullamcorper suspendisse hendrerit id scelerisque lacus cras. Sit tristique morbi porttitor aenean vulputate in. Ac tellus massa vulputate consectetur ut eget nunc. Posuere ac vitae   urna consequat sed dictum diam nullam.
-                        Nisl ut scelerisque semper justo in. Nisl sem et volutpat leo enim. Quisque amet quam a quis. Ultricies nunc erat aliquam proin cursus mollis velit malesuada. Semper egestas massa turpis bibendum sem. Facilisi aliquet eu augue fermentum arcu egestas. Volutpat semper egestas mattis nec orci jusLorem ipsum dolor sit amet consectetur. Diam dui eu sed adipiscing mi mattis. Pellentesque ultrices a ullamcorper suspendisse hendrerit id scelerisque lacus cras. Sit tristique morbi porttitor aenean vulputate in. Ac tellus massa vulputate consectetur ut eget nunc. Posuere ac vitae leo urna consequat sed dictum diam nullam.
-                        Nisl ut scelerisque semper justo in. Nisl sem et volutpat leo enim. Quisque amet quam a quis. Ultricies nunc erat aliquam proin cursus mollis velit malesuada. Semper egestas massa turpis bibendum sem. Facilisi aliquet eu augue fermentum arcu egestas. Volutpat semper egestas mattis nec orci jus</p>
+                    <h2>{blog.blog.title}</h2>
+                    <p>{blog.blog.description}</p>
                     <ul>
                         <li>
                             <img src={calendar} alt="" />
-                            <span>UX/UI Dizayn</span>
+                            <span>{blog.blog.category.title}</span>
                         </li>
                         <li>
                             <img src={calendar} alt="" />
-                            <span>13 Sentyabr 2024</span>
+                            <span>{getFormattedDate(blog.blog.createDate)}</span>
                         </li>
                     </ul>
                 </div>
@@ -51,15 +71,21 @@ const BlogDetails = () => {
         <div className="similar-blogs">
             <div className="similar-blogs__title">
                 <h2>Oxşar bloglar</h2>
-                <Link>Daha çox</Link>
+                <LoadMore link='/blogs'/>
             </div>
             <div className="similar-blogs__list">
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
+                {
+                    blog.relatedBlogs.length > 0 ? blog.relatedBlogs.map(blog => {
+                        return(
+                            <BlogCard key={blog.id} data={blog}/>
+                        )
+                    }) : <AlertMessage text='Bu kateqoriyaya uyğun bloq yoxdur.'/>
+                }
             </div>
             <JoinUs />
         </div>
+        </> : 'yuklenir...'
+       }
     </div>
   )
 }

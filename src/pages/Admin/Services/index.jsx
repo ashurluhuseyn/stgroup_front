@@ -72,7 +72,7 @@ const AdminServices = () => {
                   <td className='px-6 py-1 whitespace-nowrap text-sm text-gray border'>{data.category.title}</td>
                   <td className='px-6 py-1 whitespace-nowrap text-sm text-gray border'>{getFormattedDate(data.createDate)}</td>
                   <td className='px-6 py-1 whitespace-nowrap text-sm text-gray border'>
-                    <Link to={`/admin/blogs/form/${data.id}`} className='btn btn-lg text-warning'>
+                    <Link to={`/admin/services/form/${data.id}`} className='btn btn-lg text-warning'>
                       <IoCreateOutline />
                     </Link>
                     <button onClick={() => deleteHandler(data.id)} className='btn btn-lg text-danger'>

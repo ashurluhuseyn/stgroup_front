@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { updateBlog } from '../../../../api/blog';
 import { getCategories } from '../../../../api/category';
-import { createCourse, getCourseById } from '../../../../api/course';
+import { createCourse, getCourseById, updateCourse } from '../../../../api/course';
 
 const CourseForm = () => {
   const { id } = useParams();
@@ -22,8 +22,6 @@ const CourseForm = () => {
   useEffect(() => {
     if (id) {
       getCourseById(id).then(data => {
-        console.log(data.course);
-        
         setCourse(data.course);
       }).catch(error => console.error("Error fetching course: ", error));
     }
@@ -72,7 +70,7 @@ const CourseForm = () => {
   
     try {
       if (id) {
-        await updateBlog(id, formData);
+        await updateCourse(id, formData);
         toast.success('Məlumat redaktə olundu');
       } else {
         await createCourse(formData);

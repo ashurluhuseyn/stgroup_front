@@ -2,7 +2,11 @@ import axiosInstance from './axiosInstance';
 
 export const createBlog = async (data) => {
   try {
-    const response = await axiosInstance.post('/blog', data);
+    const response = await axiosInstance.post('/blog', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error creating blog:", error);
@@ -34,6 +38,16 @@ export const getBlogsByCategory = async (id) => {
 export const getBlogById = async (id) => {
   try {
     const response = await axiosInstance.get(`/blog/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching blog by id:", error);
+    throw error;
+  }
+};
+
+export const getBlogDetails = async (id) => {
+  try {
+    const response = await axiosInstance.get(`/blog/${id}/details`);
     return response.data;
   } catch (error) {
     console.error("Error fetching blog by id:", error);

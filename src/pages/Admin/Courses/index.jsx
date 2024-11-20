@@ -13,8 +13,6 @@ const AdminCourses = () => {
     const fetchData = async () => {
       try {
         const data = await getCourses();
-        console.log(data.courses);
-        
         setCourses(data.courses);
       } catch (error) {
         console.log(error);
@@ -60,7 +58,6 @@ const AdminCourses = () => {
               <thead className='divide-y divide-gray-200 bg-gray-200'>
                 <tr>
                   <th className='px-6 py-3 text-center text-xs font-medium text-gray uppercase tracking-wider border'>kursun adı</th>
-                  <th className='px-6 py-3 text-center text-xs font-medium text-gray uppercase tracking-wider border'>təsviri</th>
                   <th className='px-6 py-3 text-center text-xs font-medium text-gray uppercase tracking-wider border'>şəkli</th>
                   <th className='px-6 py-3 text-center text-xs font-medium text-gray uppercase tracking-wider border'>ikon</th>
                   <th className='px-6 py-3 text-center text-xs font-medium text-gray uppercase tracking-wider border'>əməliyyatlar</th>
@@ -70,7 +67,6 @@ const AdminCourses = () => {
                   {courses.map(course => (
                   <tr key={course.id}>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>{course.title}</td>
-                    <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>{course.description}</td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>
                       <img src={`http://localhost:5000/uploads/courses/${course.image}`} alt="" />
                     </td>

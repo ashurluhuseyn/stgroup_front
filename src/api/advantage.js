@@ -2,7 +2,11 @@ import axiosInstance from './axiosInstance';
 
 export const createAdvantage = async (data) => {
   try {
-    const response = await axiosInstance.post('/advantage', data);
+    const response = await axiosInstance.post('/advantage', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error creating advantage:", error);
@@ -32,7 +36,11 @@ export const getAdvantageById = async (id) => {
 
 export const updateAdvantage = async (id, data) => {
   try {
-    const response = await axiosInstance.patch(`/advantage/${id}`, data);
+    const response = await axiosInstance.patch(`/advantage/${id}`, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error updating advantage:", error);
@@ -42,7 +50,11 @@ export const updateAdvantage = async (id, data) => {
 
 export const deleteAdvantage = async (id) => {
     try {
-      const response = await axiosInstance.delete(`/advantage/${id}`);
+      const response = await axiosInstance.delete(`/advantage/${id}`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
       return response.data; 
     } catch (error) {
       console.error("Delete error:", error);

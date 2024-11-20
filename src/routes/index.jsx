@@ -22,7 +22,7 @@ export const ROUTES = {
             PATH: '/blogs'
           },
           DETAILS: {
-            PATH: '/blogs/1'
+            PATH: '/blogs/:id'
           }
         },
         CAREER: {
@@ -46,7 +46,7 @@ export const ROUTES = {
             PATH: '/corporate/services'
           },
           DETAILS: {
-            PATH: '/corporate/services/1'
+            PATH: '/corporate/services/:id'
           }
         },
         EVENTS: {
@@ -54,7 +54,7 @@ export const ROUTES = {
             PATH: '/corporate/events'
           },
           DETAILS: {
-            PATH: '/corporate/events/1'
+            PATH: '/corporate/events/:id'
           }
         },
     }
@@ -65,6 +65,15 @@ export const ADMIN_ROUTES = {
   HOME: {
     PATH: '/admin'
   },
+
+  MAIN: {
+    HOME: {
+      PATH: '/admin/home'
+    },
+    EDIT: {
+      PATH: '/admin/home/form/:id'
+    }
+  },
   
   LOGIN: {
     PATH: '/admin/login'
@@ -74,10 +83,7 @@ export const ADMIN_ROUTES = {
     MAIN: {
       PATH: '/admin/about'
     },
-    NEW_ADVANTAGE: {
-      PATH: '/admin/about/form'
-    },
-    EDIT_ADVANTAGE: {
+    EDIT_ABOUT: {
       PATH: '/admin/about/form/:id'
     }
   },
@@ -86,16 +92,11 @@ export const ADMIN_ROUTES = {
     MAIN: {
       PATH: '/admin/events'
     },
-    CATEGORY: {
-      MAIN: {
-        PATH: '/admin/events/categories'
-      },
-      NEW: {
-        PATH: '/admin/events/categories/form'
-      },
-      EDIT: {
-        PATH: '/admin/events/categories/form/:id'
-      }
+    NEW_EVENT: {
+      PATH: '/admin/events/form'
+    },
+    EDIT_EVENT: {
+      PATH: '/admin/events/form/:id'
     }
   },
 
@@ -129,6 +130,30 @@ export const ADMIN_ROUTES = {
     },
     EDIT_COURSE: {
       PATH: '/admin/courses/form/:id'
+    }
+  },
+
+  SUBJECTS: {
+    MAIN: {
+      PATH: '/admin/subjects'
+    },
+    NEW_SUBJECT: {
+      PATH: '/admin/subjects/form'
+    },
+    EDIT_SUBJECT: {
+      PATH: '/admin/subjects/form/:id'
+    }
+  },
+
+  PLANS: {
+    MAIN: {
+      PATH: '/admin/plans'
+    },
+    NEW_PLAN: {
+      PATH: '/admin/plans/form'
+    },
+    EDIT_PLAN: {
+      PATH: '/admin/plans/form/:id'
     }
   },
 
@@ -174,6 +199,18 @@ export const ADMIN_ROUTES = {
     },
     EDIT_BLOG: {
       PATH: '/admin/blogs/form/:id'
+    }
+  },
+
+  TEACHERS: {
+    MAIN: {
+      PATH: '/admin/teachers'
+    },
+    NEW_TEACHER: {
+      PATH: '/admin/teachers/form'
+    },
+    EDIT_TEACHER: {
+      PATH: '/admin/teachers/form/:id'
     }
   },
 

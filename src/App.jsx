@@ -22,7 +22,6 @@ import NewUser from './pages/Admin/Users/NewUser';
 import AdminAdvantages from './pages/Admin/Advantages';
 import AdvantageForm from './pages/Admin/Advantages/Form';
 import AdminEvents from './pages/Admin/Events';
-import AdminEventCategoryForm from './pages/Admin/Events/Form';
 import AcademicApply from './pages/Admin/Applies/Academic';
 import CorporativeApply from './pages/Admin/Applies/Corporate';
 import Fields from './pages/Academic/Fields';
@@ -48,6 +47,16 @@ import CourseForm from './pages/Admin/Courses/Form';
 import AdminServices from './pages/Admin/Services';
 import ServiceForm from './pages/Admin/Services/Form';
 import ServiceDetails from './pages/Corporate/Services/Details';
+import AdminMain from './pages/Admin/Main';
+import MainForm from './pages/Admin/Main/Form';
+import AboutForm from './pages/Admin/About/Form';
+import AdminPlans from './pages/Admin/Plan';
+import PlanForm from './pages/Admin/Plan/Form';
+import TeacherForm from './pages/Admin/Teachers/Form';
+import AdminTeachers from './pages/Admin/Teachers';
+import AdminEventsForm from './pages/Admin/Events/Form';
+import AdminSubjects from './pages/Admin/Subjects';
+import SubjectForm from './pages/Admin/Subjects/Form';
 
 const App = () => {
   return (
@@ -77,27 +86,39 @@ const App = () => {
           {/* Admin Paneli */}
           <Route element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
             <Route path={ADMIN_ROUTES.HOME.PATH} element={<AdminHome />} />
+            <Route path={ADMIN_ROUTES.MAIN.HOME.PATH} element={<AdminMain />} />
+            <Route path={ADMIN_ROUTES.MAIN.EDIT.PATH} element={<MainForm />} />
             <Route path={ADMIN_ROUTES.USERS.MAIN.PATH} element={<AdminUsers />} />
             <Route path={ADMIN_ROUTES.COURSES.MAIN.PATH} element={<AdminCourses />} />
             <Route path={ADMIN_ROUTES.COURSES.NEW_COURSE.PATH} element={<CourseForm />} />
             <Route path={ADMIN_ROUTES.COURSES.EDIT_COURSE.PATH} element={<CourseForm />} />
+            <Route path={ADMIN_ROUTES.SUBJECTS.MAIN.PATH} element={<AdminSubjects />} />
+            <Route path={ADMIN_ROUTES.SUBJECTS.NEW_SUBJECT.PATH} element={<SubjectForm />} />
+            <Route path={ADMIN_ROUTES.SUBJECTS.EDIT_SUBJECT.PATH} element={<SubjectForm />} />
             <Route path={ADMIN_ROUTES.USERS.NEW_USER.PATH} element={<NewUser />} />
             <Route path={ADMIN_ROUTES.CATEGORIES.MAIN.PATH} element={<AdminCategories />} />
             <Route path={ADMIN_ROUTES.CATEGORIES.NEW_CATEGORY.PATH} element={<AdminCategoryForm />} />
             <Route path={ADMIN_ROUTES.CATEGORIES.EDIT_CATEGORY.PATH} element={<AdminCategoryForm />} />
             <Route path={ADMIN_ROUTES.ABOUT.MAIN.PATH} element={<AdminAbout />} />
+            <Route path={ADMIN_ROUTES.ABOUT.EDIT_ABOUT.PATH} element={<AboutForm />} />
             <Route path={ADMIN_ROUTES.BLOGS.MAIN.PATH} element={<AdminBlogs />} />
             <Route path={ADMIN_ROUTES.BLOGS.NEW_BLOG.PATH} element={<BlogForm />} />
             <Route path={ADMIN_ROUTES.BLOGS.EDIT_BLOG.PATH} element={<BlogForm />} />
+            <Route path={ADMIN_ROUTES.TEACHERS.MAIN.PATH} element={<AdminTeachers />} />
+            <Route path={ADMIN_ROUTES.TEACHERS.EDIT_TEACHER.PATH} element={<TeacherForm />} />
+            <Route path={ADMIN_ROUTES.TEACHERS.NEW_TEACHER.PATH} element={<TeacherForm />} />
             <Route path={ADMIN_ROUTES.SERVICES.MAIN.PATH} element={<AdminServices />} />
             <Route path={ADMIN_ROUTES.SERVICES.NEW_SERVICE.PATH} element={<ServiceForm />} />
             <Route path={ADMIN_ROUTES.SERVICES.EDIT_SERVICE.PATH} element={<ServiceForm />} />
             <Route path={ADMIN_ROUTES.ADVANTAGES.MAIN.PATH} element={<AdminAdvantages />} />
             <Route path={ADMIN_ROUTES.ADVANTAGES.NEW_ADVANTAGE.PATH} element={<AdvantageForm />} />
             <Route path={ADMIN_ROUTES.ADVANTAGES.EDIT_ADVANTAGE.PATH} element={<AdvantageForm />} />
+            <Route path={ADMIN_ROUTES.PLANS.MAIN.PATH} element={<AdminPlans />} />
+            <Route path={ADMIN_ROUTES.PLANS.EDIT_PLAN.PATH} element={<PlanForm />} />
+            <Route path={ADMIN_ROUTES.PLANS.NEW_PLAN.PATH} element={<PlanForm />} />
             <Route path={ADMIN_ROUTES.EVENTS.MAIN.PATH} element={<AdminEvents />} />
-            <Route path={ADMIN_ROUTES.EVENTS.CATEGORY.NEW.PATH} element={<AdminEventCategoryForm />} />
-            <Route path={ADMIN_ROUTES.EVENTS.CATEGORY.EDIT.PATH} element={<AdminEventCategoryForm />} />
+            <Route path={ADMIN_ROUTES.EVENTS.NEW_EVENT.PATH} element={<AdminEventsForm />} />
+            <Route path={ADMIN_ROUTES.EVENTS.EDIT_EVENT.PATH} element={<AdminEventsForm />} />
             <Route path={ADMIN_ROUTES.VACANCIES.MAIN.PATH} element={<AdminVacancies />} />
             <Route path={ADMIN_ROUTES.VACANCIES.NEW_VACANCY.PATH} element={<VacancyForm />} />
             <Route path={ADMIN_ROUTES.VACANCIES.EDIT_VACANCY.PATH} element={<VacancyForm />} />

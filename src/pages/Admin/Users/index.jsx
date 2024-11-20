@@ -25,8 +25,6 @@ const AdminUsers = () => {
 
 
   const handleDelete = async (userId) => {
-    console.log(userId);
-    
     const token = localStorage.getItem('token'); 
     if (!token) {
       toast.error("Token mövcud deyil, silinmə əməliyyatı uğursuz oldu");

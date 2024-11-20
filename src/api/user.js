@@ -22,9 +22,11 @@ export const getAllUsers = async (userId) => {
 
 export const createUser = async (userData) => {
   try {
+    const token = localStorage.getItem('token');
     const response = await axiosInstance.post(`/auth/register`, userData, {
       headers: {
         'Content-Type': 'application/json',
+         Authorization: `Bearer ${token}`
       },
     })
     return response.data;
@@ -33,7 +35,6 @@ export const createUser = async (userData) => {
     throw error;
   }
 };
-
 
 export const login = async (user) => {
     try {
@@ -59,7 +60,6 @@ export const updateRole = async (id, role, token) => {
     throw error;
   }
 };
-
 
 export const deleteUser = async (userId, token) => {
   if (!token) {

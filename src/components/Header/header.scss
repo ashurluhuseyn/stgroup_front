@@ -15,6 +15,24 @@ header{
                 a{
                     font-size: 16px;
                     font-weight: 300;
+                    transition: .4s;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 0;
+                        height: 1px;
+                        background-color: #008ADF;
+                        transition: .4s;
+                    }
+                    &:hover{
+                        color: #008ADF;
+                        &::before{
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }
@@ -36,6 +54,24 @@ header{
                     a{
                         font-size: 20px;
                         font-weight: 300;
+                        transition: .4s;
+                        position: relative;
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 0;
+                            height: 1px;
+                            background-color: #008ADF;
+                            transition: .4s;
+                        }
+                        &:hover{
+                            color: #008ADF;
+                            &::before{
+                                width: 100%;
+                            }
+                        }
                     }
                 }
             }
@@ -81,6 +117,35 @@ header{
                 li{
                     a{
                         color: #151515;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-image: linear-gradient(
+                            to right,
+                            #008ADF 50%,
+                            #008ADF 50%,
+                            #151515 50%);
+                        background-size: 200% 100%;
+                        background-position: -100%;
+                        transition: all 0.3s ease-in-out;
+                        &:before{
+                            display:block;
+                            content:'';
+                            width:0;
+                            height:2px;
+                            bottom:5px;
+                            left:0;
+                            bottom:-3px;
+                            z-index:0;
+                            position:absolute;
+                            background: #008adfab;
+                            transition: all 0.3s ease-in-out;
+                          }
+                          &:hover{
+                            background-position: 0%;
+                            &:before{
+                              width:100%;
+                            }
+                        }
                     }
                 }
             }
@@ -116,6 +181,35 @@ header{
                 li{
                     a{
                         color: #fff;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-image: linear-gradient(
+                            to right,
+                            #008ADF 50%,
+                            #008ADF 50%,
+                            #fff 50%);
+                        background-size: 200% 100%;
+                        background-position: -100%;
+                        transition: all 0.3s ease-in-out;
+                        &:before{
+                            display:block;
+                            content:'';
+                            width:0;
+                            height:2px;
+                            bottom:5px;
+                            left:0;
+                            bottom:-3px;
+                            z-index:0;
+                            position:absolute;
+                            background: #008adfab;
+                            transition: all 0.3s ease-in-out;
+                          }
+                          &:hover{
+                            background-position: 0%;
+                            &:before{
+                              width:100%;
+                            }
+                        }
                     }
                 }
             }

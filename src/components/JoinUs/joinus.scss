@@ -10,6 +10,35 @@
         padding: 25px 56px;
         display: flex;
         justify-content: space-between;
+        position: relative;
+        z-index: 1;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ffffff23;
+            transition: .4s;
+            z-index: -1;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ffffff23;
+            transition: .6s;
+            z-index: -1;
+        }
+        &:hover{
+            &::before, &::after{
+                width: 100%;
+            }
+        }
         .join-form{
             width: 769px;
             .join-form-content{

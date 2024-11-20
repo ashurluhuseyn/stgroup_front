@@ -13,8 +13,6 @@ const CvModal = ({ active, setIsActive, id }) => {
         try {
           const data = await getApplicationsByVacancy(id);
           setApplications(data);
-          console.log(data);
-          
         } catch (error) {
           console.error('Application couldnt get', error);
         }

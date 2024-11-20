@@ -25,8 +25,9 @@ const VacancyForm = () => {
 
   useEffect(() => {
     if (id) {
-      getVacancyById(id)
-        .then(data => {
+      const fetchData = async () => {
+        try {
+          const data = await getVacancyById(id);
           setVacancy({
             title: data.title || '',
             deadline: data.deadline ? new Date(data.deadline) : new Date(),
@@ -36,10 +37,13 @@ const VacancyForm = () => {
             conditions: data.conditions || '',
             categoryID: data.categoryID || '',
           });
-        })
-        .catch(error => console.error("Error fetching vacancy: ", error));
+        } catch (error) {
+          console.error("Error fetching vacancy: ", error);
+        }
+      };
+      fetchData();
     }
-  }, [id]); // Dikkat: vacancy burada dəyişilmir
+  }, [id]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,8 +58,6 @@ const VacancyForm = () => {
   }, []);
 
   const handleSubmit = async (e) => {
-    console.log(vacancy);
-    
     e.preventDefault();
     try {
       if (id) {
@@ -86,24 +88,31 @@ const VacancyForm = () => {
           />
         </div>
         <div className="admin-users__form__container">
-          <label>Kateqoriya</label>
-          <select
-            value={vacancy.categoryID}
-            onChange={(e) => setVacancy({ ...vacancy, categoryID: e.target.value })}
-          >
-            {data.map((item) => (
-              <option key={item.id} value={item.id}>{item.title}</option>
-            ))}
-          </select>
-        </div>
-        <div className="admin-users__form__container">
-          <label>İş növü</label>
-          <select onChange={(e) => setVacancy({ ...vacancy, jobType: e.target.value })}>
-            {jobTypes.map((item) => (
-              <option key={item} value={item}>{item}</option>
-            ))}
-          </select>
-        </div>
+            <label>Kateqoriya</label>
+            <select
+              value={vacancy.categoryID}
+              onChange={(e) => setVacancy({ ...vacancy, categoryID: e.target.value })}
+            >
+              <option value="" disabled>Birini seçin</option> {/* Disabled statik seçim */}
+              {data.map((item) => (
+                <option key={item.id} value={item.id}>{item.title}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="admin-users__form__container">
+            <label>İş növü</label>
+            <select
+              value={vacancy.jobType}
+              onChange={(e) => setVacancy({ ...vacancy, jobType: e.target.value })}
+            >
+              <option value="" disabled>Birini seçin</option> {/* Disabled statik seçim */}
+              {jobTypes.map((item) => (
+                <option key={item} value={item}>{item}</option>
+              ))}
+            </select>
+          </div>
+
         <div className="admin-users__form__container">
           <label>Tarix</label>
           <DatePicker
