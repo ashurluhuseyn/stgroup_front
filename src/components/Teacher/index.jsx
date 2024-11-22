@@ -6,7 +6,7 @@ const TeacherCard = ({ data }) => {
     <div className='teacher-card'>
       <div className="teacher-wrap">
         <div className="teacher-wrap__img">
-          <img src={`http://localhost:5000/uploads/teachers/${data.image}`}  alt="" />
+          <img src={`https://api.1stgroupacademy.com/uploads/teachers/${data.image}`}  alt="" />
         </div>
         <div className="teacher-wrap__description">
           <h1>{data.fullname}</h1>
