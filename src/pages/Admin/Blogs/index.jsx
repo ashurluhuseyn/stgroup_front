@@ -53,7 +53,7 @@ const AdminBlogs = () => {
         {isLoading ? (
           <div className="alert alert-info mx-auto w-25 text-center">Yüklənir...</div> // Yüklənmə mesajı
         ) : isError ? (
-          <div className="alert alert-danger mx-auto w-25 text-center">Xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin.</div> // Xəta mesajı
+          <div className="alert alert-danger mx-auto w-25 text-center">Bloq yoxdur.</div> // Xəta mesajı
         ) : data.length > 0 ? (
           <table className='min-w-full divide-y divide-gray shadow-md bg-white'>
             <thead className='bg-gray-100'>
