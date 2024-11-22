@@ -50,7 +50,7 @@ const BlogDetails = () => {
             <h1>Blog</h1>
             <div className="details__wrap">
                 <div className="details__wrap__img">
-                    <img src={`http://localhost:5000/uploads/blogs/${blog.blog.image}`}  alt="" />
+                    <img src={`https://1stgroupacademy.com/uploads/blogs/${blog.blog.image}`}  alt="Blog image" />
                 </div>
                 <div className="details__wrap__content">
                     <h2>{blog.blog.title}</h2>
