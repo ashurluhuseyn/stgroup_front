@@ -18,7 +18,7 @@ const Banner = ({ path, data }) => {
               <Link to='/apply'>Daha çox <img src={arrowRight} alt="arrow svg icon" /></Link>
             </div>
           </div>
-          <div className="banner__wrap__right" style={{backgroundImage: `url('http://localhost:5000/uploads/${path}/${data.image}')`}}>
+          <div className="banner__wrap__right" style={{backgroundImage: `url('https://api.1stgroupacademy.com/uploads/${path}/${data.image}')`}}>
           </div>
         </div>
     </div>
