@@ -9,7 +9,7 @@ const BlogCard = ({ data }) => {
        <Link to={`/blogs/${data.id}`}>
         <div className="blog-card__content">
               <div className="blog-card__content__img">
-                <img src={`http://localhost:5000/uploads/blogs/${data.image}`} alt="" />
+                <img src={`https://api.1stgroupacademy.com/uploads/blogs/${data.image}`} alt="" />
               </div>
               <div className="blog-card__content__title">
                   <h1>{data.title}</h1>
