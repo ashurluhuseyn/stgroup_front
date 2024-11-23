@@ -55,7 +55,7 @@ const AdminPlans = () => {
                   {plans.map(plan => (
                   <tr key={plan.id}>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border' style={{backgroundColor: "#008ADF"}}>
-                      <img src={`http://localhost:5000/uploads/plans/${plan.image}`} alt="" />
+                      <img src={`https://api.1stgroupacademy.com/uploads/plans/${plan.image}`} alt="" />
                     </td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>{plan.title}</td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>{plan.description}</td>
