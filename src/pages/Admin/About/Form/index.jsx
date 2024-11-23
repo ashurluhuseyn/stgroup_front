@@ -123,7 +123,7 @@ const AboutForm = () => {
               onChange={handleImageChange}
             />
             {id && data.image && (
-              <img src={`http://localhost:5000/uploads/about/${data.image}`} 
+              <img src={`https://api.1stgroupacademy.com/uploads/about/${data.image}`} 
                   style={{ width: "250px", height: "250px", display: "block", marginTop: "24px" }} 
                   alt="Şəkil" />
             )}
