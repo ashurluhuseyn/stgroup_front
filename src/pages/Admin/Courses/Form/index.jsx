@@ -118,7 +118,7 @@ const CourseForm = () => {
             onChange={handleImageChange}
           />
           {id && course.image && (
-            <img src={`http://localhost:5000/uploads/courses/${course.image}`} 
+            <img src={`https://api.1stgroupacademy.com/uploads/courses/${course.image}`} 
                  style={{ width: "250px", height: "250px", display: "block", marginTop: "24px" }} 
                  alt="Şəkil" />
           )}
