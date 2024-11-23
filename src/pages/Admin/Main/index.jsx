@@ -55,7 +55,7 @@ const AdminMain = () => {
                   <tbody>
                     <tr>
                       <td>
-                          <img src={`http://localhost:5000/uploads/home/${data.homeData.image}`} style={tdCSS} alt="" />
+                          <img src={`https://api.1stgroupacademy.com/uploads/home/${data.homeData.image}`} style={tdCSS} alt="" />
                       </td>
                       <td className='px-6 py-1 whitespace-nowrap text-sm text-gray border'>{data.homeData.sectionTitle}</td>
                       <td className='px-6 py-1 whitespace-nowrap text-sm text-gray border'>{data.homeData.sectionDescription.slice(0,20) + "..."}</td>
