@@ -31,7 +31,7 @@ const EventDetails = () => {
                 <h1>{data.event.title}</h1>
                 <p>{data.event.description}</p>
                 <div>
-                    <img src={`http://localhost:5000/uploads/events/${data.event.image}`}  alt="" />
+                    <img src={`https://api.1stgroupacademy.com/uploads/events/${data.event.image}`}  alt="" />
                 </div>
             </div>
             <ul className="event-content__date">
