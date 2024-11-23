@@ -17,7 +17,7 @@ const FieldCard = ({ data }) => {
                 </div>
             </div>
             <div className="field-card__content__img">
-                <img src={`https://1stgroupacademy.com/uploads/courses/${data.icon}`} alt={data.title + "icon"} />
+                <img src={`https://api.1stgroupacademy.com/uploads/courses/${data.icon}`} alt={data.title + "icon"} />
             </div>
         </div>
     </div>
