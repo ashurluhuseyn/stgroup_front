@@ -71,7 +71,7 @@ const AdminCourses = () => {
                       <img src={`http://localhost:5000/uploads/courses/${course.image}`} alt="" />
                     </td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>
-                      <img src={`http://localhost:5000/uploads/courses/${course.icon}`} alt="" />
+                      <img src={`https://api.1stgroupacademy.com/uploads/courses/${course.icon}`} alt="" />
                     </td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>
                     <Link to={`/admin/courses/form/${course.id}`} className='btn btn-lg text-warning'>
