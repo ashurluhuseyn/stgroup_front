@@ -77,7 +77,7 @@ const PlanForm = () => {
             onChange={handleImageChange}
           />
           {id && plan.image && (
-            <img src={`http://localhost:5000/uploads/plans/${plan.image}`} 
+            <img src={`https://api.1stgroupacademy.com/uploads/plans/${plan.image}`} 
                  style={{ width: "50px", height: "50px", display: "block", marginTop: "24px" }} 
                  alt="İkon" />
           )}
