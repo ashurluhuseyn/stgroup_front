@@ -65,7 +65,7 @@ const AdminServices = () => {
                 {data.map(data => (
                 <tr key={data.id}>
                   <td className='px-6 py-1 whitespace-nowrap text-sm text-gray border'>
-                    <img src={`http://localhost:5000/uploads/services/${data.image}`} alt="" />
+                    <img src={`https://api.1stgroupacademy.com/uploads/services/${data.image}`} alt="" />
                   </td>
                   <td className='px-6 py-1 whitespace-nowrap text-sm text-gray border'>{data.title}</td>
                   <td className='px-6 py-1 whitespace-nowrap text-sm text-gray border' style={tdCSS}>{data.description}</td>
