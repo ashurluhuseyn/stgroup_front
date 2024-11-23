@@ -52,7 +52,7 @@ const AdminTeachers = () => {
                   {data.map(item => (
                   <tr key={item.id}>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>
-                      <img src={`http://localhost:5000/uploads/teachers/${item.image}`} alt="" />
+                      <img src={`https://api.1stgroupacademy.com/uploads/teachers/${item.image}`} alt="" />
                     </td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>{item.fullname}</td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>{item.category.title}</td>
