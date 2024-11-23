@@ -48,7 +48,7 @@ const FieldsDetails = () => {
                             <div key={item.id} className="fields-adv__wrap__item">
                                 <div className="fields-adv__wrap__item__img">
                                     <div>
-                                        <img  src={`http://localhost:5000/uploads/plans/${item.image}`}  alt="" />
+                                        <img  src={`https://api.1stgroupacademy.com/uploads/plans/${item.image}`}  alt="" />
                                     </div>
                                     <span>{item.title}</span>
                                 </div>
