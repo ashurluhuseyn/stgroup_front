@@ -105,7 +105,7 @@ const BlogForm = () => {
             onChange={handleImageChange}
           />
           {id && blog.image && (
-            <img src={`http://localhost:5000/uploads/blogs/${blog.image}`} 
+            <img src={`https://api.1stgroupacademy.com/uploads/blogs/${blog.image}`} 
                  style={{ width: "250px", height: "250px", display: "block", marginTop: "24px" }} 
                  alt="Şəkil" />
           )}
