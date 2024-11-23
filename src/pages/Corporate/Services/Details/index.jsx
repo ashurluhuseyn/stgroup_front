@@ -51,7 +51,7 @@ const ServiceDetails = () => {
                 <div dangerouslySetInnerHTML={{ __html: data.service.description2 }} />
             </div>
             <div className="service-details__wrap__img">
-                <img src={`http://localhost:5000/uploads/services/${data.service.image}`}  alt="" />
+                <img src={`https://api.1stgroupacademy.com/uploads/services/${data.service.image}`}  alt="" />
             </div>
         </div>
         <div className="service-details__others">
