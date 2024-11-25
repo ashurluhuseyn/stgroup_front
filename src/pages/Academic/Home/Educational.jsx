@@ -47,7 +47,7 @@ const Educational = () => {
               return(
                 <FieldCard key={course.id} data={course}/>
               )
-            }) : "Bloq yoxdur..."
+            }) : "Kurs yoxdur..."
            }
         </div>
        </div>
