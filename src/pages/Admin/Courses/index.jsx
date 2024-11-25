@@ -68,7 +68,7 @@ const AdminCourses = () => {
                   <tr key={course.id}>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>{course.title}</td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>
-                      <img src={`http://localhost:5000/uploads/courses/${course.image}`} alt="" />
+                      <img src={`https://api.1stgroupacademy.com/uploads/courses/${course.image}`} alt="" />
                     </td>
                     <td className='px-6 py-2 whitespace-nowrap text-sm text-gray border'>
                       <img src={`https://api.1stgroupacademy.com/uploads/courses/${course.icon}`} alt="" />
