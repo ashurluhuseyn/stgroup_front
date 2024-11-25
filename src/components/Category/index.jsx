@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getCategories } from "../../api/category";
 import { getDataByQueryType } from "../../utils/queryType";
-import './category.scss'
+import './category.scss';
 import { Link } from "react-router-dom";
 
 const CategoryList = ({ queryType, onCategorySelect }) => {
@@ -25,7 +25,7 @@ const CategoryList = ({ queryType, onCategorySelect }) => {
     try {
       setActiveCategoryId(id);
       const data = await getDataByQueryType(queryType, id);
-      onCategorySelect(data.blogs || data.events || data.services);
+      onCategorySelect(data.courses || []);
     } catch (error) {
       console.error('Error fetching data by category:', error);
       onCategorySelect([]);
@@ -45,16 +45,15 @@ const CategoryList = ({ queryType, onCategorySelect }) => {
       >
         <Link to={`/${queryType}`}>Hamısı</Link>
       </li>
-      {categories &&
-        categories.map((item) => (
-          <li 
-            key={item.id} 
-            onClick={() => categoryHandler(item.id)} 
-            className={item.id === activeCategoryId ? 'active' : ''}
-          >
-            <span>{item.title}</span>
-          </li>
-        ))}
+      {categories.map((item) => (
+        <li 
+          key={item.id} 
+          onClick={() => categoryHandler(item.id)} 
+          className={item.id === activeCategoryId ? 'active' : ''}
+        >
+          <span>{item.title}</span>
+        </li>
+      ))}
     </ul>
   );
 };
