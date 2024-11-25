@@ -36,6 +36,17 @@ export const getCourseById = async (id) => {
   }
 };
 
+export const getCoursesByCategoryID = async (id) => {
+  try {
+    const response = await axiosInstance.get(`/course/category/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching courses:", error);
+    throw error;
+  }
+};
+
+
 export const getCourseDetails = async (id) => {
   try {
     const response = await axiosInstance.get(`/course/${id}/details`);
