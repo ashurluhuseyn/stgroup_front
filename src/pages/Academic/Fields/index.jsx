@@ -45,7 +45,7 @@ const Fields = () => {
             <div className="fields__title">
                 <h1>Tədris sahələri</h1>
             </div>
-            <CategoryList queryType="fields" onCategorySelect={handleCategorySelect} />
+            <CategoryList queryType="courses" onCategorySelect={handleCategorySelect} />
             <div className="fields__list">
               {emptyState ? (
                 <AlertMessage text='Bu kateqoriyaya uyğun məlumat yoxdur.'/>
