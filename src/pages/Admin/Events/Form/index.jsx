@@ -40,10 +40,13 @@ const EventForm = () => {
     fetchData();
   }, []);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImageFile(file);
-    setEvent(prevData => ({ ...prevData, image: file.name }));
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEvent({ ...event, [name]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setEvent({ ...event, image: e.target.files[0] });
   };
 
   const handleSubmit = async (e) => {
@@ -54,11 +57,8 @@ const EventForm = () => {
     formData.append('description', event.description);
     formData.append('description2', event.description2);
     formData.append('categoryID', event.categoryID);
-  
-    if (imageFile) {
-      formData.append('image', imageFile);
-    }
-  
+    if (event.image) formData.append('image', event.image);
+
     try {
       if (id) {
         await updateEvent(id, formData);
@@ -82,11 +82,11 @@ const EventForm = () => {
       <div className="admin-users__form">
         <div className="admin-users__form__container">
           <label htmlFor="">Başlıq</label>
-          <input value={event.title} onChange={(e) => setEvent({ ...event, title: e.target.value })} />
+          <input value={event.title} onChange={handleInputChange} name='title' />
         </div>
         <div className="admin-users__form__container">
           <label htmlFor="">Kateqoriya</label>
-          <select value={event.categoryID} onChange={(e) => setEvent({ ...event, categoryID: e.target.value })}>
+          <select value={event.categoryID} name='categoryID' onChange={handleInputChange}>
             <option value="">Seçin</option>
             {
               data.map(item => (
@@ -97,9 +97,9 @@ const EventForm = () => {
         </div>
         <div className="admin-users__form__container">
           <label htmlFor="">Təsvir</label>
-          <input value={event.description} onChange={(e) => setEvent({ ...event, description: e.target.value })} />
+          <input name="description" value={event.description} onChange={handleInputChange} />
         </div>
-         <div className="admin-users__form__container">
+        <div className="admin-users__form__container">
         <label>Ətraflı Açıqlama</label>
         <CKEditor
             editor={ClassicEditor}
@@ -110,6 +110,7 @@ const EventForm = () => {
             }}
           />
       </div>
+        
         <div className="admin-users__form__container">
           <label htmlFor="file-upload" className="custom-file-upload">
             Şəkli seçin
@@ -117,13 +118,8 @@ const EventForm = () => {
           <input 
             id="file-upload" 
             type="file" 
-            onChange={handleImageChange}
+            onChange={handleFileChange}
           />
-          {id && event.image && (
-            <img src={event.image}
-                 style={{ width: "250px", height: "250px", display: "block", marginTop: "24px" }} 
-                 alt="Şəkil" />
-          )}
         </div>
         <div className="admin-users__form__container">
           <button onClick={handleSubmit}>{id ? 'Yenilə' : 'Əlavə et'}</button>
