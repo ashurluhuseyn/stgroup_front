@@ -17,7 +17,7 @@ const EventForm = () => {
     categoryID: '',
     image: null,
   });
-  const [imageFile, setImageFile] = useState(null);
+
 
   useEffect(() => {
     if (id) {
