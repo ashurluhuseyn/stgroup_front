@@ -61,7 +61,7 @@ const CvModal = ({ active, setIsActive, id }) => {
                       {getFormattedDate(app.createDate)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <a href={`https://1stgroupacademy.com/uploads/cvs/${app.cv}`} target="_blank" rel="noopener noreferrer">CV'ni yüklə</a>
+                      <a href={`https://api.1stgroupacademy.com/uploads/cvs/${app.cv}`} target="_blank" rel="noopener noreferrer">CV'ni yüklə</a>
                     </td>
                   </tr>
                 ))}
