@@ -137,7 +137,10 @@ const EventForm = () => {
             data={event.description2 || ''}
             onChange={(event, editor) => {
               const data = editor.getData();
-              setEvent({ ...event, description2: data });
+              setEvent(prevState => ({
+                ...prevState,
+                description2: data,
+              }));
             }}
           />
       </div>
