@@ -11,7 +11,7 @@ export const createEvent = async (data) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error creating service:", error);
+    console.error("Error creating event:", error);
     throw error;
   }
 };
