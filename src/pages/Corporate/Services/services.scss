@@ -46,8 +46,9 @@
             cursor: pointer;
         }
         .active{
+            background-color: #008ADF;
             border-radius: 16px;
-            background-color: #10113F;
+            padding: 16px 34px;
             color: #fff;
         }
     }
