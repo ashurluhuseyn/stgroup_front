@@ -41,11 +41,10 @@ export const getCoursesByCategoryID = async (id) => {
     const response = await axiosInstance.get(`/course/category/${id}`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching courses:", error);
+    console.error("Error fetching courses by category ID:", error);
     throw error;
   }
 };
-
 
 export const getCourseDetails = async (id) => {
   try {
