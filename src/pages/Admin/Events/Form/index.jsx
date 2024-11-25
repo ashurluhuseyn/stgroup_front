@@ -13,6 +13,7 @@ const EventForm = () => {
   const [event, setEvent] = useState({
     title: '',
     description: '',
+    description2: '',
     categoryID: '',
     image: null,
   });
@@ -51,6 +52,7 @@ const EventForm = () => {
   
     formData.append('title', event.title);
     formData.append('description', event.description);
+    formData.append('description2', event.description2);
     formData.append('categoryID', event.categoryID);
   
     if (imageFile) {
@@ -97,6 +99,17 @@ const EventForm = () => {
           <label htmlFor="">Təsvir</label>
           <input value={event.description} onChange={(e) => setEvent({ ...event, description: e.target.value })} />
         </div>
+         <div className="admin-users__form__container">
+        <label>Ətraflı Açıqlama</label>
+        <CKEditor
+            editor={ClassicEditor}
+            data={event.description2 || ''} // Əgər undefined və ya null olarsa, boş string kimi istifadə olunur
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              setEvent({ ...event, description2: data });
+            }}
+          />
+      </div>
         <div className="admin-users__form__container">
           <label htmlFor="file-upload" className="custom-file-upload">
             Şəkli seçin
