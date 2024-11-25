@@ -9,7 +9,7 @@ const EventCard = ({ data }) => {
     <div className='events__list__item'>
         <Link to={`/corporate/events/${data.id}`}>
             <div className="events__list__item__image">
-                <img src={`https://1stgroupacademy.com/uploads/events/${data.image}`}  alt="" />
+                <img src={`https://api.1stgroupacademy.com/uploads/events/${data.image}`}  alt="" />
             </div>
             <div className="events__list__item__content">
                 <h1>{data.title}</h1>
